@@ -47,35 +47,52 @@ public class Portifolio {
     }
 
    public BigDecimal getValue(){
-      BigDecimal value = BigDecimal.ZERO ;
+//      BigDecimal value = BigDecimal.ZERO ;
 
-       for(Valuable valuable : assets) {
-           value = value.add(valuable.getValue());
+//       for(Valuable valuable : assets) {
+//           value = value.add(valuable.getValue());
+//
+//       }
+       BigDecimal value = assets.stream()
+               .map(Valuable::getValue)
+               .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-       }
        return value;
    }
 
 
-   public Valuable getMostValuable(){
-       Valuable mostValuable = assets.get(0);
-        for(Valuable valuable : assets) {
-            if (valuable.getValue().compareTo(mostValuable.getValue()) > 0) {
-                mostValuable = valuable;
-            }
+   public BigDecimal getMostValuable(){
+//       Valuable mostValuable = assets.get(0);
+//        for(Valuable valuable : assets) {
+//            if (valuable.getValue().compareTo(mostValuable.getValue()) > 0) {
+//                mostValuable = valuable;
+//            }
+//
+//        }
+//        return mostValuable;
 
-        }
-        return mostValuable;
+        return assets.stream()
+                .map(Valuable::getValue)
+                .max(BigDecimal::compareTo)
+                .orElse(BigDecimal.ZERO);
+
+
+
+
    }
 
-   public Valuable getLowestValuable(){
-        Valuable lowestValuable = assets.get(0);
-        for(Valuable valuable : assets) {
-            if (valuable.getValue().compareTo(lowestValuable.getValue()) < 0) {
-                lowestValuable = valuable;
-            }
-        }
-        return lowestValuable;
+   public BigDecimal getLowestValuable(){
+//        Valuable lowestValuable = assets.get(0);
+//        for(Valuable valuable : assets) {
+//            if (valuable.getValue().compareTo(lowestValuable.getValue()) < 0) {
+//                lowestValuable = valuable;
+//            }
+//        }
+
+        return assets.stream()
+                .map(Valuable::getValue)
+                .min(BigDecimal::compareTo)
+                .orElse(BigDecimal.ZERO);
    }
 
 }
