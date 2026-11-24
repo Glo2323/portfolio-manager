@@ -1,5 +1,7 @@
 package com.pluralsight.finance;
 
+import java.math.BigDecimal;
+
 public class Gold  extends FixedAsset {
    private double weight;
 
@@ -17,8 +19,8 @@ public class Gold  extends FixedAsset {
     }
 
     @Override
-    public void getValue() {
-        setMarketValue(weight);
+    public BigDecimal getValue() {
 
+        return BigDecimal.valueOf(weight);
     }
 }

@@ -1,5 +1,7 @@
 package com.pluralsight.finance;
 
+import java.math.BigDecimal;
+
 public class CreditCard implements Valuable {
 
     private String name;
@@ -45,9 +47,10 @@ public class CreditCard implements Valuable {
     }
 
     @Override
-    public void getValue(){
+    public BigDecimal getValue(){
 
         System.out.println("Your credit card has a balance of $" + balance);
 
+        return BigDecimal.valueOf(balance);
     }
 }

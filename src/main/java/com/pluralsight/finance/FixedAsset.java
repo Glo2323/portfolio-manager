@@ -1,5 +1,7 @@
 package com.pluralsight.finance;
 
+import java.math.BigDecimal;
+
 public class FixedAsset implements Valuable{
     private String name;
     private double marketValue;
@@ -25,4 +27,8 @@ public class FixedAsset implements Valuable{
         this.marketValue = marketValue;
     }
 
+    @Override
+    public BigDecimal getValue() {
+        return null;
+    }
 }

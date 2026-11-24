@@ -1,5 +1,7 @@
 package com.pluralsight.finance;
 
+import java.math.BigDecimal;
+
 public class House extends FixedAsset{
 
     private int yearBuilt;
@@ -38,7 +40,8 @@ public class House extends FixedAsset{
     }
 
     @Override
-    public void getValue(){
-        getMarketValue();
+    public BigDecimal getValue(){
+
+        return BigDecimal.ZERO;
     }
 }
